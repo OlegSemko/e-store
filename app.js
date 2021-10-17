@@ -11,7 +11,7 @@ app.use('/users', userRoute);
 app.use('/products', productRoute);
 app.use('/orders', orderRoute);
 app.use((req, res, next) => {
-  res.send('Not found');
+  res.status(404).send('Not found');
 });
 
 app.listen(port);
