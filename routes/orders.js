@@ -25,7 +25,7 @@ router.get('/:id(\\d+)', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  client.query('insert into orders (orderName) values ($1) returning id', [req.body.name], (err, result) => {
+  client.query('insert into orders (ordername) values ($1) returning id', [req.body.name], (err, result) => {
     if (err) {
       console.log(err);
       return;
@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id(\\d+)', (req, res) => {
-  client.query('update orders set orderName = $2 where id =$1 returning id', [req.body.name, req.body.id], (err, result) => {
+  client.query('update orders set ordername = $2 where id =$1 returning id', [req.body.name, req.body.id], (err, result) => {
     if (err) {
       console.log(err);
       return;

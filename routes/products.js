@@ -25,7 +25,7 @@ router.get('/:id(\\d+)', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  client.query('insert into products (productName) values ($1) returning id', [req.body.name], (err, result) => {
+  client.query('insert into products (productname) values ($1) returning id', [req.body.name], (err, result) => {
     if (err) {
       console.log(err);
       return;
@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id(\\d+)', (req, res) => {
-  client.query('update products set productName = $2 where id =$1 returning id', [req.body.name, req.body.id], (err, result) => {
+  client.query('update products set productname = $2 where id =$1 returning id', [req.body.name, req.body.id], (err, result) => {
     if (err) {
       console.log(err);
       return;
