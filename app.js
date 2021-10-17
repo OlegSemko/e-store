@@ -10,10 +10,8 @@ app.use(bodyParser.json());
 app.use('/users', userRoute);
 app.use('/products', productRoute);
 app.use('/orders', orderRoute);
-app.use(req, res, next) => {
+app.use((req, res, next) => {
   res.send('Not found');
-};
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
 });
+
+app.listen(port);

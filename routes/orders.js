@@ -35,5 +35,26 @@ router.post('/', (req, res) => {
   });
 });
 
+router.put('/:id(\\d+)', (req, res) => {
+  client.query('update orders set orderName = $2 where id =$1 returning id', [req.body.name, req.body.id], (err, result) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    console.log(result.rows);
+    res.json(result.rows);
+  });
+});
+
+router.delete('/:id(\\d+)', (req, res) => {
+  client.query('delete from orders where id = ($1) returning id', [req.params.id], (err, result) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    console.log(result.rows);
+    res.json(result.rows);
+  });
+});
 
 module.exports = router;
